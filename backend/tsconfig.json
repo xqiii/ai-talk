@@ -1,0 +1,46 @@
+{
+  // TypeScript 编译器配置
+  "compilerOptions": {
+    // ===== 基础配置 =====
+    "target": "ES2020",                           // 编译目标：ES2020，支持现代 JavaScript 特性
+    "module": "commonjs",                         // 模块系统：CommonJS（Node.js 标准）
+    "lib": ["ES2020"],                            // 引入的库：ES2020 标准库
+    
+    // ===== 输出配置 =====
+    "outDir": "./dist",                           // 编译输出目录
+    "rootDir": "./src",                           // 源代码根目录
+    
+    // ===== 严格模式 =====
+    "strict": true,                               // 启用所有严格类型检查选项
+    "noImplicitAny": true,                        // 不允许隐式的 any 类型
+    "strictNullChecks": true,                     // 严格的 null 和 undefined 检查
+    "strictFunctionTypes": true,                  // 严格的函数类型检查
+    
+    // ===== 模块解析 =====
+    "esModuleInterop": true,                      // 启用 ES 模块互操作性（允许 import default）
+    "moduleResolution": "node",                   // 模块解析策略：Node.js 方式
+    "resolveJsonModule": true,                    // 允许导入 JSON 文件
+    
+    // ===== 代码质量 =====
+    "noUnusedLocals": true,                       // 检查未使用的局部变量
+    "noUnusedParameters": true,                   // 检查未使用的函数参数
+    "noImplicitReturns": true,                    // 确保函数所有路径都有返回值
+    "noFallthroughCasesInSwitch": true,           // 防止 switch 语句贯穿（需要 break）
+    
+    // ===== 调试和声明 =====
+    "sourceMap": true,                            // 生成 source map 文件（用于调试）
+    "declaration": true,                          // 生成 .d.ts 类型声明文件
+    "declarationMap": true,                       // 生成声明文件的 source map
+    
+    // ===== 其他配置 =====
+    "skipLibCheck": true,                         // 跳过库文件的类型检查（加快编译速度）
+    "forceConsistentCasingInFileNames": true      // 强制文件名大小写一致
+  },
+  
+  // 包含的文件：src 目录下的所有文件
+  "include": ["src/**/*"],
+  
+  // 排除的目录：不编译这些目录
+  "exclude": ["node_modules", "dist"]
+}
+

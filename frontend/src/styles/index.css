@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font */
+@layer base {
+  body {
+    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', 
+                 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 
+                 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  * {
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Root variables */
+:root {
+  --chat-bg: #f7f7f8;
+  --sidebar-bg: #ffffff;
+  --primary-color: #7851A9;
+  --user-message-bg: #7851A9;
+  --assistant-message-bg: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
+.dark {
+  --chat-bg: #212121;
+  --sidebar-bg: #171717;
+  --primary-color: #9d7ec7;
+  --user-message-bg: #7851A9;
+  --assistant-message-bg: #2c2c2c;
+  --border-color: #404040;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Markdown styles */
+.prose {
+  max-width: none;
+}
+
+.prose pre {
+  @apply rounded-lg my-4;
+}
+
+.prose code {
+  @apply text-sm;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold mb-2 mt-4;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.dark .prose blockquote {
+  @apply border-gray-600;
+}
+
+/* Ant Design overrides for dark mode */
+.dark .ant-input,
+.dark .ant-input-textarea,
+.dark .ant-select-selector {
+  @apply bg-gray-800 border-gray-600 text-gray-200;
+}
+
+.dark .ant-btn {
+  @apply border-gray-600;
+}
+
+.dark .ant-list-item {
+  @apply border-gray-700;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+

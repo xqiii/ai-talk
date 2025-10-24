@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Backend服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3080:3080"
+    environment:
+      - PORT=3080
+      - NODE_ENV=production
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CORS_ORIGIN=http://localhost
+    depends_on:
+      - ollama
+    restart: unless-stopped
+    networks:
+      - ai-talk-network
+
+  # Frontend服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - ai-talk-network
+
+  # Ollama服务
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - ai-talk-network
+    # GPU support (uncomment if you have NVIDIA GPU)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+networks:
+  ai-talk-network:
+    driver: bridge
+
+volumes:
+  ollama-data:
+
